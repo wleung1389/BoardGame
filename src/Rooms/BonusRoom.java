@@ -1,16 +1,13 @@
 package Rooms;
 
-import Game.Runner;
 import People.Person;
 
 public class BonusRoom extends Room{
     private int c;
-    private int d;
-    public BonusRoom(int x, int y, int c, int d)
+    public BonusRoom(int x, int y, int c)
     {
         super(x,y);
         this.c = c;
-        this.d = d;
     }
 
     /**
@@ -23,7 +20,7 @@ public class BonusRoom extends Room{
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
-        double hint = (5*c+2)/3;
-        System.out.println("You entered the bonux room. The hint is (5*c+2)/3 = " + hint + ". Find c to find the x coordinate of the winning room.");
+        double hint = Math.pow((4*c)+2,3);
+        System.out.println("You entered the bonux room. The hint is ((4*c)+2)^3 = " + hint + ". Find c to find the x coordinate of the winning room.");
     }
 }

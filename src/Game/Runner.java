@@ -1,15 +1,11 @@
 package Game;
 
 import People.Person;
-import Rooms.BonusRoom;
-import Rooms.LosingRoom;
-import Rooms.Room;
-import Rooms.WinningRoom;
+import Rooms.*;
+
 import java.util.Scanner;
 
 public class Runner {
-	
-
 	private static boolean gameOn = true;
 	
 	public static void main(String[] args)
@@ -26,24 +22,45 @@ public class Runner {
 		}
 		
 		//Create a random winning room.
-		int x = (int)(Math.random()*building.length);
-		int y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(x, y);
+        int x = 0;
+		int y = 0;
+        while(x == 0 && y == 0)
+        {
+            x = (int) (Math.random() * building.length);
+            y = (int) (Math.random() * building.length);
+            building[x][y] = new WinningRoom(x, y);
+        }
+		System.out.println(x);
+		System.out.println(y);
 		int a = 0;
 		int b = 0;
-		while(a == x && b == y)
+		while(a == x && b == y || a == 0 && b == 0)
 		{
             a = (int) (Math.random() * building.length);
             b = (int) (Math.random() * building.length);
-            building[x][y] = new LosingRoom(a, b);
+            building[a][b] = new LosingRoom(a, b);
         }
+        System.out.println(a);
+		System.out.println(b);
         int c = 0;
 		int d = 0;
-		while(c == a || c == x && d == b || d == y)
+		while(c == a || c == x && d == b || d == y || c == 0 && d == 0)
         {
             c = (int) (Math.random() * building.length);
             d = (int) (Math.random() * building.length);
-            building[x][y] = new BonusRoom(c,d,x,y);
+            building[c][d] = new BonusRoom(c,d,x);
+        }
+        System.out.println(c);
+		System.out.println(d);
+		int e = 0;
+		int f = 0;
+		while(e == a || e == x || e == c && f == y || f == b || f == d || e == 0 && f == 0)
+        {
+            e = (int) (Math.random() * building.length);
+            f = (int) (Math.random() * building.length);
+            int rndx = (int) (Math.random() * building.length);
+            int rndy = (int) (Math.random() * building.length);
+            building[e][f] = new TeleportationRoom(e,f,rndx,rndy);
         }
 
 		 
