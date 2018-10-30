@@ -12,7 +12,7 @@ public class WinningRoom extends Room
 	}
 
 	/**
-	 * Triggers the game ending conditions.
+	 * Triggers the player's winning sequence.
 	 * @param x the Person entering
 	 */
 	@Override

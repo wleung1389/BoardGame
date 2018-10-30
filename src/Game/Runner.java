@@ -1,9 +1,10 @@
 package Game;
 
 import People.Person;
+import Rooms.BonusRoom;
+import Rooms.LosingRoom;
 import Rooms.Room;
 import Rooms.WinningRoom;
-
 import java.util.Scanner;
 
 public class Runner {
@@ -28,6 +29,23 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
+		int a = 0;
+		int b = 0;
+		while(a == x && b == y)
+		{
+            a = (int) (Math.random() * building.length);
+            b = (int) (Math.random() * building.length);
+            building[x][y] = new LosingRoom(a, b);
+        }
+        int c = 0;
+		int d = 0;
+		while(c == a || c == x && d == b || d == y)
+        {
+            c = (int) (Math.random() * building.length);
+            d = (int) (Math.random() * building.length);
+            building[x][y] = new BonusRoom(c,d,x,y);
+        }
+
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
@@ -45,7 +63,6 @@ public class Runner {
 			else {
 				System.out.println("Please choose a valid move.");
 			}
-			
 			
 		}
 		in.close();
