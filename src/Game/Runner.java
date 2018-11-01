@@ -1,7 +1,7 @@
 package Game;
 
 import People.Person;
-import Rooms.*;
+import Map.*;
 
 import java.util.Scanner;
 
@@ -10,69 +10,86 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[5][5];
+		Room[][] map = new Room[100][100];
 		
-		//Fill the building with normal rooms
-		for (int x = 0; x<building.length; x++)
+		//Fill the map with normal rooms
+		for (int x = 0; x<map.length; x++)
 		{
-			for (int y = 0; y < building[x].length; y++)
+			for (int y = 0; y < map[x].length; y++)
 			{
-				building[x][y] = new Room(x,y);
+				map[x][y] = new Room(x,y);
 			}
 		}
-		
-		//Create a random winning room.
         int x = 0;
 		int y = 0;
-        while(x == 0 && y == 0)
+        map[0][0] = new startingRoom();
+        for(int i = 0; i < 200; i++)
         {
-            x = (int) (Math.random() * building.length);
-            y = (int) (Math.random() * building.length);
-            building[x][y] = new WinningRoom(x, y);
-        }
-		System.out.println(x);
-		System.out.println(y);
-		int a = 0;
-		int b = 0;
-		while(a == x && b == y || a == 0 && b == 0)
-		{
-            a = (int) (Math.random() * building.length);
-            b = (int) (Math.random() * building.length);
-            building[a][b] = new LosingRoom(a, b);
-        }
-        System.out.println(a);
-		System.out.println(b);
-        int c = 0;
-		int d = 0;
-		while(c == a || c == x && d == b || d == y || c == 0 && d == 0)
-        {
-            c = (int) (Math.random() * building.length);
-            d = (int) (Math.random() * building.length);
-            building[c][d] = new BonusRoom(c,d,x);
-        }
-        System.out.println(c);
-		System.out.println(d);
-		int e = 0;
-		int f = 0;
-		while(e == a || e == x || e == c && f == y || f == b || f == d || e == 0 && f == 0)
-        {
-            e = (int) (Math.random() * building.length);
-            f = (int) (Math.random() * building.length);
-            int rndx = (int) (Math.random() * building.length);
-            int rndy = (int) (Math.random() * building.length);
-            building[e][f] = new TeleportationRoom(e,f,rndx,rndy);
+            if(x == 0 && y == 0)
+            {
+                x++;
+                y++;
+            }
+            else
+            {
+                double rnd = getRndInteger(1, 4);
+                if (rnd == 1)
+                {
+                    if (y + 1 > map.length)
+                    {
+                        y--;
+                    }
+                    else
+                        {
+                        y++;
+                    }
+                }
+                if (rnd == 2)
+                {
+                    if (x + 1 > map.length)
+                    {
+                        x--;
+                    }
+                    else
+                        {
+                        x++;
+                    }
+                }
+                if (rnd == 3)
+                {
+                    if (y - 1 < 0)
+                    {
+                        y++;
+                    }
+                    else
+                        {
+                        y--;
+                    }
+                }
+                if (rnd == 4)
+                {
+                    if (x - 1 < 0)
+                    {
+                        x++;
+                    }
+                    else
+                    {
+                        x--;
+                    }
+                }
+            }
         }
 
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
-		building[0][0].enterRoom(player1);
+		map[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
 			String move = in.nextLine();
-			if(validMove(move, player1, building))
+			if(validMove(move, player1, map))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 				
@@ -152,7 +169,9 @@ public class Runner {
 	{
 		gameOn = false;
 	}
-	
 
+    public static int getRndInteger(int min, int max) {
+        return (int) Math.floor(Math.random() * (max - min + 1) ) + min;
+    }
 
 }

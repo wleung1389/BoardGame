@@ -1,14 +1,11 @@
-package Rooms;
+package Map;
 
+import Game.Runner;
 import People.Person;
 
-public class TeleportationRoom extends Room {
-    private int rndx;
-    private int rndy;
-    public TeleportationRoom(int x, int y, int rndx, int rndy) {
+public class LosingRoom extends Room {
+    public LosingRoom(int x, int y) {
         super(x,y);
-        this.rndx = rndx;
-        this.rndy = rndy;
     }
 
     /**
@@ -19,8 +16,9 @@ public class TeleportationRoom extends Room {
     public void enterRoom(Person x) {
 
         occupant = x;
-        x.setxLoc(this.rndx);
-        x.setyLoc(this.rndy);
+        x.setxLoc(this.xLoc);
+        x.setyLoc(this.yLoc);
         System.out.println("You entered the losing room. Minus 10 points from Gryffindor.");
+        Runner.gameOff();
     }
 }

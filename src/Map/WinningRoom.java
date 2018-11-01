@@ -1,4 +1,4 @@
-package Rooms;
+package Map;
 
 import Game.Runner;
 import People.Person;
