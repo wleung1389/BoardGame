@@ -1,11 +1,11 @@
 package Map;
 
-import People.Person;
+import Entities.Player;
 
-public class TeleportationRoom extends Room {
+public class teleportationSpot extends safeSpot {
     private int rndx;
     private int rndy;
-    public TeleportationRoom(int x, int y, int rndx, int rndy) {
+    public teleportationSpot(int x, int y, int rndx, int rndy) {
         super(x,y);
         this.rndx = rndx;
         this.rndy = rndy;
@@ -13,10 +13,10 @@ public class TeleportationRoom extends Room {
 
     /**
      * Triggers the player losing sequence.
-     * @param x the Person entering
+     * @param x the Player entering
      */
     @Override
-    public void enterRoom(Person x) {
+    public void enterRoom(Player x) {
 
         occupant = x;
         x.setxLoc(this.rndx);

@@ -1,22 +1,22 @@
 package Map;
 
+import Entities.Player;
 import Game.Runner;
-import People.Person;
 
-public class WinningRoom extends Room
+public class finalBossDungeon extends safeSpot
 {
 
-	public WinningRoom(int x, int y) {
+	public finalBossDungeon(int x, int y) {
 		super(x, y);
 
 	}
 
 	/**
 	 * Triggers the player's winning sequence.
-	 * @param x the Person entering
+	 * @param x the Player entering
 	 */
 	@Override
-	public void enterRoom(Person x) {
+	public void enterRoom(Player x) {
 
 		occupant = x;
 		x.setxLoc(this.xLoc);

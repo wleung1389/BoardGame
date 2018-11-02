@@ -1,12 +1,12 @@
 package Map;
 
-import People.Person;
+import Entities.Player;
 
-public class Room {
-	Person occupant;
+public class safeSpot {
+	Player occupant;
 	int xLoc,yLoc;
 	
-	public Room(int x, int y)
+	public safeSpot(int x, int y)
 	{
 		xLoc = x;
 		yLoc = y;
@@ -14,11 +14,11 @@ public class Room {
 
 	/**
 	 * Method controls the results when a person enters this room.
-	 * @param x the Person entering
+	 * @param x the Player entering
 	 */
-	public void enterRoom(Person x)
+	public void enterRoom(Player x)
 	{
-		System.out.println("You enter a plain old room");
+		System.out.println("You've entered a safe spot.");
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
@@ -28,7 +28,7 @@ public class Room {
 	 * Removes the player from the room.
 	 * @param x
 	 */
-	public void leaveRoom(Person x)
+	public void leaveRoom(Player x)
 	{
 		occupant = null;
 	}

@@ -1,6 +1,6 @@
 package Game;
 
-import People.Person;
+import Entities.Player;
 import Map.*;
 
 import java.util.Scanner;
@@ -10,25 +10,26 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] map = new Room[100][100];
+		safeSpot[][] map = new safeSpot[100][100];
 		
 		//Fill the map with normal rooms
 		for (int x = 0; x<map.length; x++)
 		{
 			for (int y = 0; y < map[x].length; y++)
 			{
-				map[x][y] = new Room(x,y);
+				map[x][y] = new safeSpot(x,y);
 			}
 		}
         int x = 0;
 		int y = 0;
-        map[0][0] = new startingRoom();
+        map[0][0] = new startingPosition();
         for(int i = 0; i < 200; i++)
         {
             if(x == 0 && y == 0)
             {
                 x++;
                 y++;
+                makeRndRoom();
             }
             else
             {
@@ -82,7 +83,7 @@ public class Runner {
 
 		 
 		 //Setup player 1 and the input scanner
-		Person player1 = new Person("FirstName", "FamilyName", 0,0);
+		Player player1 = new Player("FirstName", "FamilyName", 0,0);
 		map[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
@@ -109,7 +110,7 @@ public class Runner {
 	 * @param map the 2D array of rooms
 	 * @return
 	 */
-	public static boolean validMove(String move, Person p, Room[][] map)
+	public static boolean validMove(String move, Player p, safeSpot[][] map)
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
@@ -173,5 +174,45 @@ public class Runner {
     public static int getRndInteger(int min, int max) {
         return (int) Math.floor(Math.random() * (max - min + 1) ) + min;
     }
-
+    public static void makeRndRoom(int x, int y, safeSpot[][] map)
+    {
+        int rnd = getRndInteger(1,8);
+        int a = getRndInteger(0,99);
+        int b = getRndInteger(0,99);
+        if(rnd == 1)
+        {
+            int rndX = getRndInteger(0,99);
+            int rndY = getRndInteger(0,99);
+            map[x][y] = new teleportationSpot(a,b,rndX,rndY);
+        }
+        if(rnd == 2)
+        {
+            int c = getRndInteger(1,100);
+            map[x][y] = new hiddenDungeon(a,b,c);
+        }
+        if(rnd == 3)
+        {
+            map[x][y] = new safeSpot(a,b);
+        }
+        if(rnd == 4)
+        {
+            map[x][y] = new easyDungeon();
+        }
+        if(rnd == 5)
+        {
+            map[x][y] = new normalDungeon();
+        }
+        if(rnd == 6)
+        {
+            map[x][y] = new hardDungeon();
+        }
+        if(rnd == 7)
+        {
+            map[x][y] = new expertDungeon();
+        }
+        if(rnd == 8)
+        {
+            map[x][y] = new trainingSpot();
+        }
+    }
 }
