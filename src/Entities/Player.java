@@ -1,12 +1,15 @@
 package Entities;
 
+import Game.Runner;
+
 /**
  * Player represents the player as they move through the game.
  */
 public class Player {
-	String firstName;
-	String familyName;
+	String name;
 	int xLoc, yLoc;
+	int hp, wepAttk, defense;
+	Items[][] inventory;
 
 
 	public int getxLoc() {
@@ -25,12 +28,24 @@ public class Player {
 		this.yLoc = yLoc;
 	}
 
-	public Player(String firstName, String familyName, int xLoc, int yLoc)
+	public Player(String n, int xLoc, int yLoc)
 	{
-		this.firstName = firstName;
-		this.familyName = familyName;
+		this.name = n;
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
+	}
+	public void attacked(int dmg)
+	{
+		double rnd = Runner.getRndInteger(1,5);
+		hp -= dmg/(rnd/10*defense);
+		if(hp < 0)
+		{
+			hp = 0;
+		}
+	}
+	public int getWepStats()
+	{
+		return wepAttk;
 	}
 
 

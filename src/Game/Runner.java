@@ -83,9 +83,12 @@ public class Runner {
 
 		 
 		 //Setup player 1 and the input scanner
-		Player player1 = new Player("FirstName", "FamilyName", 0,0);
+        Scanner in = new Scanner(System.in);
+        System.out.println("What is your name?");
+        String name = in.nextLine();
+		Player player1 = new Player(name, 0,0);
 		map[0][0].enterRoom(player1);
-		Scanner in = new Scanner(System.in);
+
 		while(gameOn)
 		{
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
