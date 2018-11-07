@@ -21,6 +21,10 @@ public class teleportationSpot extends safeSpot {
         occupant = x;
         x.setxLoc(this.rndx);
         x.setyLoc(this.rndy);
-        System.out.println("You entered the losing room. Minus 10 points from Gryffindor.");
+        System.out.println("You entered the teleportation room.");
+    }
+    public String toString()
+    {
+        return "[Tele]";
     }
 }

@@ -10,8 +10,12 @@ public class Sword extends Items {
         this.rarity = rarity;
     }
     @Override
-    public abstract int getStats()
+    public int getStats()
     {
-        return
+        return 1;
+    }
+    public int setStats()
+    {
+        return 1;
     }
 }

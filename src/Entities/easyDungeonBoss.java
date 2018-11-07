@@ -12,5 +12,13 @@ public class easyDungeonBoss {
         attack = a;
         defense = d;
     }
+    public String getName()
+    {
+        return name;
+    }
+    public int getBossHP()
+    {
+        return hp;
+    }
 
 }

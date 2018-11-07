@@ -24,6 +24,9 @@ public class finalBossDungeon extends safeSpot
 		System.out.println("You found the winning room! Ten points for Gryffindor.");
 		Runner.gameOff();
 	}
-	
+	public String toString()
+	{
+		return "[Boss]";
+	}
 
 }

@@ -22,4 +22,8 @@ public class hiddenDungeon extends safeSpot {
         x.setyLoc(this.yLoc);
         System.out.println("You entered the bonux room.");
     }
+    public String toString()
+    {
+        return "    ";
+    }
 }

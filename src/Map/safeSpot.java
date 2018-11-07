@@ -32,5 +32,8 @@ public class safeSpot {
 	{
 		occupant = null;
 	}
-	
+	public String toString()
+	{
+		return "[Safe]";
+	}
 }

@@ -9,7 +9,6 @@ public class Player {
 	String name;
 	int xLoc, yLoc;
 	int hp, wepAttk, defense;
-	Items[][] inventory;
 
 
 	public int getxLoc() {

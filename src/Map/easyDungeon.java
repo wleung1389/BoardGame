@@ -28,10 +28,10 @@ public class easyDungeon extends safeSpot {
         int battk = Runner.getRndInteger(15,20);
         int bdefense = Runner.getRndInteger(13,18);
         easyDungeonBoss boss = new easyDungeonBoss(name,bhp,battk,bdefense);
-        System.out.println("You entered an easy dungeon. Find " + easyDungeonBoss.getName() + " and kill them.");
+        System.out.println("You entered an easy dungeon. Find " + boss.getName() + " and kill them.");
         String[] mobs = new String[] {"Goblins","Zombies","Spiders"};
-        int rnd1 = Runner.getRndInteger(1,3);
-        int rnd2 = Runner.getRndInteger(1,3);
+        int rnd1 = Runner.getRndInteger(0,2);
+        int rnd2 = Runner.getRndInteger(0,2);
         String mob1 = mobs[rnd1];
         String mob2 = mobs[rnd2];
         int hp = Runner.getRndInteger(10,30);
@@ -53,7 +53,7 @@ public class easyDungeon extends safeSpot {
                     int wepAttk = x.getWepStats();
                     int dmg = wepAttk * 5;
                     monster2.attacked(dmg);
-                    System.out.println("You attacked the monster with your weapon. You dealt " + dmg + ". The monster has " + monster2.getMonsterHP());
+                    System.out.println("You attacked the monster with your weapon. You dealt " + dmg + " dmg. The monster has " + monster2.getMonsterHP() + " HP");
                     int mDmg = monster2.attk();
                     x.attacked(mDmg);
                 }
@@ -71,5 +71,9 @@ public class easyDungeon extends safeSpot {
 
         }
         input.close();
+    }
+    public String toString()
+    {
+        return "[Easy]";
     }
 }
