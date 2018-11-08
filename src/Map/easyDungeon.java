@@ -3,12 +3,11 @@ package Map;
 import Entities.Player;
 import Entities.easyDungeonBoss;
 import Entities.easyDungeonMobs;
-import Entities.normalDungeonMobs;
 import Game.Runner;
 
 import java.util.Scanner;
 
-public class easyDungeon extends safeSpot {
+public class easyDungeon extends BasicRoom {
     public easyDungeon(int x, int y) {
         super(x,y);
     }
@@ -42,7 +41,7 @@ public class easyDungeon extends safeSpot {
         int defense2 = Runner.getRndInteger(8,15);
         easyDungeonMobs monster1 = new easyDungeonMobs(mob1,hp,attk,defense);
         easyDungeonMobs monster2 = new easyDungeonMobs(mob2,hp2,attk2,defense2);
-        while(monster1.getMonsterHP() != 0 && monster2.getMonsterHP() != 0)
+        while(monster1.getHP() != 0 && monster2.getHP() != 0)
         {
             System.out.println("The first wave of monsters have come. Fight(F), Inventory(I)");
             String choice = input.nextLine();
@@ -53,8 +52,8 @@ public class easyDungeon extends safeSpot {
                     int wepAttk = x.getWepStats();
                     int dmg = wepAttk * 5;
                     monster2.attacked(dmg);
-                    System.out.println("You attacked the monster with your weapon. You dealt " + dmg + " dmg. The monster has " + monster2.getMonsterHP() + " HP");
-                    int mDmg = monster2.attk();
+                    System.out.println("You attacked the monster with your weapon. You dealt " + dmg + " dmg. The monster has " + monster2.getHP() + " HP");
+                    int mDmg = monster2.getAttk();
                     x.attacked(mDmg);
                 }
                 else
@@ -62,13 +61,13 @@ public class easyDungeon extends safeSpot {
                     double wepAttk = x.getWepStats();
                     double dmg = wepAttk * 5;
                     monster2.attacked(dmg);
-                    System.out.println("You attacked the monster with your weapon. You dealt " + dmg + ". The monster has " + monster1.getMonsterHP());
+                    System.out.println("You attacked the monster with your weapon. You dealt " + dmg + ". The monster has " + monster1.getHP());
                 }
             }
         }
-        while(boss.getBossHP() != 0)
+        System.out.println("The boss, " + boss.getName() + " has appeared.");
+        while(boss.getHP() != 0)
         {
-
         }
         input.close();
     }

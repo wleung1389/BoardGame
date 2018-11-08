@@ -1,6 +1,8 @@
 package Entities;
 
-public class easyDungeonBoss {
+import Game.Runner;
+
+public class easyDungeonBoss implements NPCs {
     private static String name;
     private static int hp;
     private static int attack;
@@ -16,9 +18,16 @@ public class easyDungeonBoss {
     {
         return name;
     }
-    public int getBossHP()
+    public int getHP()
     {
         return hp;
     }
-
+    public int getAttk()
+    {
+        return attack* Runner.getRndInteger(3,8);
+    }
+    public int getDefense()
+    {
+        return defense;
+    }
 }

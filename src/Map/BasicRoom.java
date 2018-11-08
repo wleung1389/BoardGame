@@ -2,11 +2,11 @@ package Map;
 
 import Entities.Player;
 
-public class safeSpot {
+public class BasicRoom {
 	Player occupant;
 	int xLoc,yLoc;
 	
-	public safeSpot(int x, int y)
+	public BasicRoom(int x, int y)
 	{
 		xLoc = x;
 		yLoc = y;

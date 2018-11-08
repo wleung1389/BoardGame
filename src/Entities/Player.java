@@ -8,7 +8,13 @@ import Game.Runner;
 public class Player {
 	String name;
 	int xLoc, yLoc;
-	int hp, wepAttk, defense;
+	int chp;
+
+
+
+	int mhp;
+	int wepAttk;
+	int defense;
 
 
 	public int getxLoc() {
@@ -36,10 +42,10 @@ public class Player {
 	public void attacked(int dmg)
 	{
 		double rnd = Runner.getRndInteger(1,5);
-		hp -= dmg/(rnd/10*defense);
-		if(hp < 0)
+		chp -= dmg/(rnd/10*defense);
+		if(chp < 0)
 		{
-			hp = 0;
+			chp = 0;
 		}
 	}
 	public int getWepStats()
@@ -47,5 +53,26 @@ public class Player {
 		return wepAttk;
 	}
 
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getChp() {
+		return chp;
+	}
+
+	public void setChp(int chp) {
+		this.chp = chp;
+	}
+	public int getMhp() {
+		return mhp;
+	}
+
+	public void setMhp(int mhp) {
+		mhp = mhp;
+	}
 }

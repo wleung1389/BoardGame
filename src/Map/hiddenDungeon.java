@@ -2,7 +2,7 @@ package Map;
 
 import Entities.Player;
 
-public class hiddenDungeon extends safeSpot {
+public class hiddenDungeon extends BasicRoom {
     private int c;
     public hiddenDungeon(int x, int y, int c)
     {

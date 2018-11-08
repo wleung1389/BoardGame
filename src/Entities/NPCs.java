@@ -1,4 +1,8 @@
 package Entities;
 
-public class NPCs {
+public interface NPCs {
+    String getName();
+    int getHP();
+    int getAttk();
+    int getDefense();
 }

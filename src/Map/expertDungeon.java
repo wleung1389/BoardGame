@@ -2,7 +2,7 @@ package Map;
 
 import Entities.Player;
 
-public class expertDungeon extends safeSpot {
+public class expertDungeon extends BasicRoom {
 
     public expertDungeon(int x, int y)
     {

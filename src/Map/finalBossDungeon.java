@@ -3,7 +3,7 @@ package Map;
 import Entities.Player;
 import Game.Runner;
 
-public class finalBossDungeon extends safeSpot
+public class finalBossDungeon extends BasicRoom
 {
 
 	public finalBossDungeon(int x, int y) {

@@ -2,7 +2,9 @@ package Map;
 
 import Entities.Player;
 
-public class trainingSpot extends safeSpot {
+import static Game.Runner.getRndInteger;
+
+public class trainingSpot extends BasicRoom {
 
     public trainingSpot(int x, int y)
     {
@@ -15,7 +17,10 @@ public class trainingSpot extends safeSpot {
      */
     public void enterRoom(Player x)
     {
-        System.out.println("You've entered a safe spot.");
+        int gAttk = getRndInteger(0,6);
+        int gDefense = getRndInteger(0,3);
+        int lHp = getRndInteger(0,6);
+        System.out.println("You've entered a training spot. You gained " + gAttk + " attack, " + gDefense + " defense and lost" + lHp + " HP.");
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);

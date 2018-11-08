@@ -2,7 +2,7 @@ package Map;
 
 import Entities.Player;
 
-public class teleportationSpot extends safeSpot {
+public class teleportationSpot extends BasicRoom {
     private int rndx;
     private int rndy;
     public teleportationSpot(int x, int y, int rndx, int rndy) {

@@ -2,7 +2,7 @@ package Map;
 
 import Entities.Player;
 
-public class startingPosition extends safeSpot {
+public class startingPosition extends BasicRoom {
 
     public startingPosition(int x, int y)
     {
