@@ -3,16 +3,18 @@ package Entities;
 import Game.Runner;
 
 public class Boss implements NPCs {
-    private static String name;
-    private static int hp;
-    private static int attack;
-    private static int defense;
+    private String name;
+    private int hp;
+    private int attack;
+    private int defense;
+    private int mhp;
     public Boss(String n, int h, int a, int d)
     {
         name = n;
         hp = h;
         attack = a;
         defense = d;
+        mhp = h;
     }
     public String getName()
     {
@@ -42,5 +44,9 @@ public class Boss implements NPCs {
         {
             hp = 0;
         }
+    }
+    public int getMHP()
+    {
+        return this.mhp;
     }
 }

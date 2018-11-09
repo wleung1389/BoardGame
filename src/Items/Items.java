@@ -13,7 +13,10 @@ public abstract class Items {
         this.stats = stats;
     }
     public abstract int getStats();
-    public abstract int setStats();
+    public abstract void setStats(int s);
     public abstract String toString();
     public abstract String getType();
+    public abstract String getName();
+    public abstract int getQuantity();
+    public abstract void setQuantity(int q);
 }

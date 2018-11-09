@@ -7,7 +7,7 @@ public class Mobs implements NPCs{
     private int hp;
     private int attack;
     private int defense;
-
+    private int mhp;
 
 
     public Mobs(String n, int h, int a, int d)
@@ -16,6 +16,7 @@ public class Mobs implements NPCs{
         attack = a;
         defense = d;
         hp = h;
+        mhp = h;
     }
     public String status()
     {
@@ -46,12 +47,14 @@ public class Mobs implements NPCs{
     }
     public double getAttk(Player x)
     {
-        double rnd = Runner.getRndInteger(1,5);
-        return attack* Runner.getRndInteger(3,8)*((rnd/10) * x.getChp());
+        return attack - (0.5 * x.getDefense());
     }
     public int getDefense()
     {
         return defense;
     }
-
+    public int getMHP()
+    {
+        return this.mhp;
+    }
 }

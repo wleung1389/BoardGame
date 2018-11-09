@@ -33,5 +33,8 @@ public class trainingSpot extends BasicRoom {
     {
         occupant = null;
     }
-
+    public String toString()
+    {
+        return "{Train}";
+    }
 }

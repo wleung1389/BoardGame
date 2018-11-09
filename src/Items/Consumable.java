@@ -13,6 +13,7 @@ public class Consumable extends Items {
         super(name,rarity, type, stats);
         this.name = name;
         this.rarity = rarity;
+        this.type = type;
         this.stats = stats;
         this.quantity = quantity;
     }
@@ -21,9 +22,17 @@ public class Consumable extends Items {
     {
         return 1;
     }
-    public int setStats()
+    public void setStats(int s)
     {
-        return 1;
+        this.stats = s;
+    }
+    public int getQuantity()
+    {
+        return this.quantity;
+    }
+    public void setQuantity(int quantity)
+    {
+        this.quantity = quantity;
     }
     public String toString()
     {
@@ -31,5 +40,9 @@ public class Consumable extends Items {
     }
     public String getType() {
         return this.type;
+    }
+    public String getName()
+    {
+        return this.name;
     }
 }

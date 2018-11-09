@@ -58,24 +58,24 @@ public class expertDungeon extends BasicRoom {
                 if (monster1.status().equals("dead")) {
                     int wepAttk = x.getWepStats();
                     double rnd = Runner.getRndInteger(1, 5);
-                    double dmg = (wepAttk * Runner.getRndInteger(6, 10)) * ((rnd / 10) * monster1.getDefense());
+                    double dmg = Math.floor((wepAttk * Runner.getRndInteger(2, 4)) * ((rnd / 10) * monster1.getDefense()));
                     monster2.attacked(dmg);
-                    System.out.println("You attacked the first monster (" + monster2.getName() + ") with your weapon. You dealt " + dmg + " dmg. The monster has " + monster2.getHP() + " HP left.");
+                    System.out.println("You attacked the first monster (" + monster2.getName() + ") with your weapon. You dealt " + dmg + " dmg. The monster has " + monster2.getHP() + "/" + monster2.getMHP() + " HP left.");
                     if (monster2.getHP() > 0) {
-                        double mDmg = monster2.getAttk(x);
+                        double mDmg = Math.floor(monster2.getAttk(x));
                         x.attacked(mDmg);
-                        System.out.println("The monster(" + monster2.getName() + ") attacked you. You lost " + mDmg + " HP. You have " + x.getChp() + " HP left.");
+                        System.out.println("The monster(" + monster2.getName() + ") attacked you. You lost " + mDmg + " HP. You have " + x.getChp() + "/" + x.getMhp() + " HP left.");
                     }
                 } else {
                     int wepAttk = x.getWepStats();
                     double rnd = Runner.getRndInteger(1, 5);
-                    double dmg = (wepAttk * Runner.getRndInteger(6, 10)) * ((rnd / 10) * monster1.getDefense());
+                    double dmg = Math.floor((wepAttk * Runner.getRndInteger(2, 4)) * ((rnd / 10) * monster1.getDefense()));
                     monster1.attacked(dmg);
-                    System.out.println("You attacked the first monster(" + monster1.getName() + ") with your weapon. You dealt " + dmg + ". The monster has " + monster1.getHP() + " HP left.");
-                    if (monster2.getHP() > 0) {
-                        double mDmg = monster1.getAttk(x);
+                    System.out.println("You attacked the first monster(" + monster1.getName() + ") with your weapon. You dealt " + dmg + ". The monster has " + monster1.getHP() + "/" + monster1.getMHP() + " HP left.");
+                    if (monster1.getHP() > 0) {
+                        double mDmg = Math.floor(monster1.getAttk(x));
                         x.attacked(mDmg);
-                        System.out.println("The monster(" + monster1.getName() + ") attacked you. You lost " + mDmg + " HP. You have " + x.getChp() + " HP left.");
+                        System.out.println("The monster(" + monster1.getName() + ") attacked you. You lost " + mDmg + " HP. You have " + x.getChp() + "/" + x.getMhp() + " HP left.");
                     }
                 }
             } else {
@@ -84,20 +84,28 @@ public class expertDungeon extends BasicRoom {
         }
         System.out.println("The boss, " + boss.getName() + " has appeared. Fight(F), Inventory(I)");
         while (boss.getHP() > 0) {
+            if(x.getChp() <= 0)
+            {
+                System.out.println("You have died. Game Over.");
+                Runner.gameOff();
+            }
             System.out.println("Fight(F), Inventory(I)");
             String choice = input.nextLine();
             if (choice.substring(0, 1).equalsIgnoreCase("F")) {
                 int wepAttk = x.getWepStats();
                 double rnd = Runner.getRndInteger(1, 5);
-                double dmg = (wepAttk * Runner.getRndInteger(6, 10)) * ((rnd / 10) * monster1.getDefense());
+                double dmg = Math.floor((wepAttk * Runner.getRndInteger(2, 4)) * ((rnd / 10) * monster1.getDefense()));
                 boss.attacked(dmg);
-                System.out.println("You attacked " + boss.getName() + " with your weapon. You dealt " + dmg + ". The boss has " + boss.getHP() + " left.");
+                System.out.println("You attacked " + boss.getName() + " with your weapon. You dealt " + dmg + ". The boss has " + boss.getHP() + "/" + boss.getMHP() + " left.");
                 if (boss.getHP() > 0) {
-                    double bDmg = boss.getAttk(x);
+                    double bDmg = Math.floor(boss.getAttk(x));
                     x.attacked(bDmg);
-                } else {
-                    x.showInventory();
+                    System.out.println("You have " + x.getChp() + "/" + x.getMhp() + " HP left.");
                 }
+            }
+            else
+            {
+                x.showInventory();
             }
             System.out.println("You beat the dungeon! Congratulations!");
             Sword item1 = new Sword("Boj's Sword", "Legendary", "Sword", 120);

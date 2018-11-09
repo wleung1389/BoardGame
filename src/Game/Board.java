@@ -28,13 +28,17 @@ public class Board {
         int x = 0;
         int y = 0;
         map[0][0] = new startingPosition(0,0);
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 40; i++)
         {
             if(x == 0 && y == 0)
             {
                 map[0][0] = new startingPosition(0,0);
                 x++;
+                BasicRoom e = new BasicRoom(x,y);
+                map[x][y] = e;
                 y++;
+                easyDungeon ez = new easyDungeon(x,y);
+                map[x][y] = ez;
             }
             else
             {

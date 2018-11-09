@@ -18,9 +18,9 @@ public class Armor extends Items {
     {
         return 1;
     }
-    public int setStats()
+    public void setStats(int s)
     {
-        return 1;
+        this.stats = s;
     }
     public String toString()
     {
@@ -28,5 +28,19 @@ public class Armor extends Items {
     }
     public String getType() {
         return this.type;
+    }
+    public String getName()
+    {
+        return this.name;
+    }
+
+    @Override
+    public int getQuantity() {
+        return 1;
+    }
+
+    @Override
+    public void setQuantity(int q) {
+
     }
 }

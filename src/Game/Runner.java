@@ -41,7 +41,7 @@ public class Runner {
                         System.out.println("There is nothing in that slot. Please choose another slot.");
                     }
                     else {
-                        if (player1.itemInInventoryAtSlot(input - 1).getType().equals("Consumable")) {
+                        if (player1.itemInInventoryAtSlot(input - 1).getType().equalsIgnoreCase("Consumable") ) {
                             player1.consume(input);
                         } else {
                             if (input > 20) {

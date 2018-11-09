@@ -12,7 +12,7 @@ import Items.Armor;
 public class Player {
 	String name;
 	int xLoc, yLoc;
-    int mhp = Runner.getRndInteger(40,60);
+    int mhp = Runner.getRndInteger(150,200);
 	int chp = mhp;
 
 
@@ -171,10 +171,16 @@ public class Player {
                 hp = this.getMhp();
             }
             this.setChp(hp);
+            System.out.println("You ate/used a(n) " + inventory[index].getName() + " and gained " + inventory[index].getStats() + "HP. Your current hp is now " + this.getChp() + "/" + this.getMhp() + ".");
+            inventory[index].setQuantity(inventory[index].getQuantity() - 1);
         }
     }
     public Items itemInInventoryAtSlot(int index)
     {
         return inventory[index];
+    }
+    public int getDefense()
+    {
+        return equipped[1].getStats();
     }
 }
