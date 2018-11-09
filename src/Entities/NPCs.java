@@ -3,6 +3,6 @@ package Entities;
 public interface NPCs {
     String getName();
     int getHP();
-    int getAttk();
+    double getAttk(Player x);
     int getDefense();
 }

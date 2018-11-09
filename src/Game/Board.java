@@ -28,7 +28,7 @@ public class Board {
         int x = 0;
         int y = 0;
         map[0][0] = new startingPosition(0,0);
-        for(int i = 0; i < 500; i++)
+        for(int i = 0; i < 30; i++)
         {
             if(x == 0 && y == 0)
             {
@@ -93,28 +93,38 @@ public class Board {
                 }
             }
         }
+        if(x < 9) {
+            x++;
+        }
+        else {
+            if (y < 19) {
+                y++;
+            }
+        }
+        finalBossDungeon b = new finalBossDungeon(x,y);
+        map[x][y] = b;
         return map;
     }
     public void makeRndRoom(int x, int y, BasicRoom[][] map)
     {
-        if(x >= 20)
+        if(x >= 10)
         {
-            x = 19;
+            x = 9;
         }
-        if(y >= 50)
+        if(y >= 20)
         {
-            y = 49;
+            y = 19;
 
         }
         int rnd = getRndInteger(1,8);
         if(rnd == 1)
         {
-            int rndX = getRndInteger(0, 19);
-            int rndY = getRndInteger(0, 49);
+            int rndX = getRndInteger(0, 9);
+            int rndY = getRndInteger(0, 19);
             while(map[rndX][rndY] == null)
             {
-                rndX = getRndInteger(0, 19);
-                rndY = getRndInteger(0, 49);
+                rndX = getRndInteger(0, 9);
+                rndY = getRndInteger(0, 19);
             }
             map[x][y] = new teleportationSpot(x, y, rndX, rndY);
         }
@@ -129,24 +139,25 @@ public class Board {
         }
         if(rnd == 4)
         {
-            map[x][y] = new easyDungeon(x,y);
+        map[x][y] = new trainingSpot(x,y);
         }
-        if(rnd == 5)
+        if(rnd >= 5)
         {
-            map[x][y] = new normalDungeon(x,y);
+            int rnd2 = getRndInteger(1,20);
+            if(rnd2 >= 0 && rnd2 <= 7) {
+                map[x][y] = new easyDungeon(x, y);
+            }
+            if(rnd2 >= 8 && rnd2 <= 13) {
+                map[x][y] = new normalDungeon(x, y);
+            }
+            if(rnd2 >= 14 && rnd2 <= 17) {
+                map[x][y] = new hardDungeon(x, y);
+            }
+            if(rnd2 >= 18 && rnd2 <= 20) {
+                map[x][y] = new expertDungeon(x, y);
+            }
         }
-        if(rnd == 6)
-        {
-            map[x][y] = new hardDungeon(x,y);
-        }
-        if(rnd == 7)
-        {
-            map[x][y] = new expertDungeon(x,y);
-        }
-        if(rnd == 8)
-        {
-            map[x][y] = new trainingSpot(x,y);
-        }
+
     }
     public void printBoard(Player p1)
     {

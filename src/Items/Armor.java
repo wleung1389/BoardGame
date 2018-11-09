@@ -1,13 +1,13 @@
 package Items;
 
-public class Sword extends Items {
+public class Armor extends Items {
     private String name;
     private String rarity;
     private String type;
     private int stats;
-    public Sword(String name, String rarity, String type, int stats)
+    public Armor(String name, String rarity, String type, int stats)
     {
-        super(name,rarity, type, stats);
+        super(name ,rarity, type, stats);
         this.name = name;
         this.rarity = rarity;
         this.type = type;

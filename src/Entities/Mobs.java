@@ -2,7 +2,7 @@ package Entities;
 
 import Game.Runner;
 
-public class easyDungeonMobs implements NPCs{
+public class Mobs implements NPCs{
     private String name;
     private int hp;
     private int attack;
@@ -10,7 +10,7 @@ public class easyDungeonMobs implements NPCs{
 
 
 
-    public easyDungeonMobs(String n, int h, int a, int d)
+    public Mobs(String n, int h, int a, int d)
     {
         name = n;
         attack = a;
@@ -30,8 +30,7 @@ public class easyDungeonMobs implements NPCs{
     }
     public void attacked(double dmg)
     {
-        double rnd = Runner.getRndInteger(1,5);
-        hp -= dmg/(rnd/10*defense);
+        hp -= dmg;
         if(hp < 0)
         {
             hp = 0;
@@ -45,9 +44,10 @@ public class easyDungeonMobs implements NPCs{
     {
         return hp;
     }
-    public int getAttk()
+    public double getAttk(Player x)
     {
-        return attack*Runner.getRndInteger(3,8);
+        double rnd = Runner.getRndInteger(1,5);
+        return attack* Runner.getRndInteger(3,8)*((rnd/10) * x.getChp());
     }
     public int getDefense()
     {

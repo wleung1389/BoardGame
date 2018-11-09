@@ -1,17 +1,20 @@
 package Items;
 
-public class Sword extends Items {
+import Entities.Player;
+
+public class Consumable extends Items {
     private String name;
     private String rarity;
     private String type;
     private int stats;
-    public Sword(String name, String rarity, String type, int stats)
+    private int quantity;
+    public Consumable(String name, String rarity, String type, int stats, int quantity)
     {
         super(name,rarity, type, stats);
         this.name = name;
         this.rarity = rarity;
-        this.type = type;
         this.stats = stats;
+        this.quantity = quantity;
     }
     @Override
     public int getStats()
@@ -24,7 +27,7 @@ public class Sword extends Items {
     }
     public String toString()
     {
-        return this.name;
+        return this.name + " x" +this.quantity;
     }
     public String getType() {
         return this.type;

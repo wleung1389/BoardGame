@@ -17,10 +17,9 @@ public class trainingSpot extends BasicRoom {
      */
     public void enterRoom(Player x)
     {
-        int gAttk = getRndInteger(0,6);
-        int gDefense = getRndInteger(0,3);
-        int lHp = getRndInteger(0,6);
-        System.out.println("You've entered a training spot. You gained " + gAttk + " attack, " + gDefense + " defense and lost" + lHp + " HP.");
+        int HP = getRndInteger(0,6);
+        System.out.println("You've entered a training spot. You increased your max HP by " + HP + ".");
+        x.gainHP(HP);
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
