@@ -181,7 +181,6 @@ public class easyDungeon extends BasicRoom {
                 }
             }
         }
-        input.close();
         System.out.println("You beat the dungeon! Congratulations!");
         Sword item1 = new Sword("Common Sword","Common", "Sword",19);
         Sword item2 = new Sword("Rusty Sword","Common", "Sword",15);

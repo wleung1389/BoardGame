@@ -185,7 +185,6 @@ public class normalDungeon extends BasicRoom {
         Items gItem = items[Runner.getRndInteger(0,5)];
         x.addToInventory(gItem);
         System.out.println("You got a[n] " + gItem.toString() + ".");
-        input.close();
     }
     public String toString()
     {
