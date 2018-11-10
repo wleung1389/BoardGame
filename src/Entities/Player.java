@@ -112,12 +112,22 @@ public class Player {
 	}
 	public void addToInventory(Items item)
     {
-        int i = 0;
-        while(inventory[i] != null && i < inventory.length)
+        int a = 0;
+        while(inventory[a] != null && a < inventory.length && !(inventory[a].getName().equalsIgnoreCase(item.getName()) && inventory[a].getType().equalsIgnoreCase(item.getType()) && inventory[a].getType().equalsIgnoreCase("Consumable")))
         {
-            i++;
+            a++;
         }
-        inventory[i] = item;
+        if(inventory[a] == null)
+        {
+            inventory[a] = item;
+        }
+        else
+        {
+            if(inventory[a].getName().equalsIgnoreCase(item.getName()) && inventory[a].getType().equalsIgnoreCase(item.getType()) && inventory[a].getType().equalsIgnoreCase("Consumable"))
+            {
+                inventory[a].setQuantity(inventory[a].getQuantity() + item.getQuantity());
+            }
+        }
     }
     public void equip(int index)
     {

@@ -168,14 +168,17 @@ public class hardDungeon extends BasicRoom {
         items[4] = item5;
         items[5] = item6;
         Items gItem = items[Runner.getRndInteger(0,5)];
+        gItem.setQuantity(10);
         x.addToInventory(gItem);
         System.out.println("You got a[n] " + gItem.toString() + ".");
-        gItem = items[Runner.getRndInteger(0,5)];
-        x.addToInventory(gItem);
-        System.out.println("You got a[n] " + gItem.toString() + ".");
-        gItem = items[Runner.getRndInteger(0,5)];
-        x.addToInventory(gItem);
-        System.out.println("You got a[n] " + gItem.toString() + ".");
+        Items aItem = items[Runner.getRndInteger(0,5)];
+        aItem.setQuantity(10);
+        x.addToInventory(aItem);
+        System.out.println("You got a[n] " + aItem.toString() + ".");
+        Items bItem = items[Runner.getRndInteger(0,5)];
+        bItem.setQuantity(10);
+        x.addToInventory(bItem);
+        System.out.println("You got a[n] " + bItem.toString() + ".");
     }
     public String toString()
     {

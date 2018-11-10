@@ -38,7 +38,14 @@ public class Runner {
 				if(String.valueOf(move).toLowerCase().equalsIgnoreCase("inventory") || String.valueOf(move).toLowerCase().equalsIgnoreCase("i"))
 				{
 					player1.showInventory();
-					int input = Integer.parseInt(in.nextLine());
+					int input = 0;
+					while(input <= 0 ) {
+						try {
+							input = Integer.parseInt(in.nextLine());
+						} catch (NumberFormatException e) {
+							System.out.println("Please input a number greater than 0.");
+						}
+					}
 					if(player1.itemInInventoryAtSlot(input - 1) == null)
                     {
                         System.out.println("There is nothing in that slot. Please choose another slot.");

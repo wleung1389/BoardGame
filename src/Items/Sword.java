@@ -36,7 +36,6 @@ public class Sword extends Items {
 
     @Override
     public void setQuantity(int q) {
-
     }
 
     @Override
