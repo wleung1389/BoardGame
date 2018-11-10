@@ -55,7 +55,11 @@ public class easyDungeon extends BasicRoom {
                 fighting = false;
             }
             System.out.println("Fight(F), Inventory(I)");
-            String choice = input.nextLine();
+            String choice = "";
+            while(choice.equalsIgnoreCase("")) {
+                System.out.println("Please type something.");
+                choice = input.nextLine();
+            }
             if(choice.substring(0,1).toLowerCase().equalsIgnoreCase("f"))
             {
                 if(monster1.status().equals("dead"))
@@ -146,7 +150,11 @@ public class easyDungeon extends BasicRoom {
                 System.exit(0);
             }
             System.out.println("Fight(F), Inventory(I)");
-            String choice = input.nextLine();
+            String choice = "";
+            while(choice.equalsIgnoreCase("")) {
+                System.out.println("Please type something.");
+                choice = input.nextLine();
+            }
             if(choice.substring(0,1).equalsIgnoreCase("F"))
             {
                 int wepAttk = x.getWepStats();
