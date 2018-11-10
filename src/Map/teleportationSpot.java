@@ -21,10 +21,10 @@ public class teleportationSpot extends BasicRoom {
         occupant = x;
         x.setxLoc(this.rndx);
         x.setyLoc(this.rndy);
-        System.out.println("You entered the teleportation room.");
+        System.out.println("You entered the teleportation spot.");
     }
     public String toString()
     {
-        return "[Tele]";
+        return "[TELE]";
     }
 }

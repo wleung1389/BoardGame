@@ -25,27 +25,39 @@ public class Board {
                 map[x][y] = null;
             }
         }
-        int x = 0;
-        int y = 0;
-        map[0][0] = new startingPosition(0,0);
-        for(int i = 0; i < 40; i++)
+        int x = 4;
+        int y = 5;
+        map[4][5] = new startingPosition(4,5);
+        for(int i = 0; i < 100; i++)
         {
-            if(x == 0 && y == 0)
+            if(3 < x && x < 5 && 4 < y && y< 6)
             {
-                map[0][0] = new startingPosition(0,0);
-                x++;
-                BasicRoom e = new BasicRoom(x,y);
-                map[x][y] = e;
-                y++;
-                easyDungeon ez = new easyDungeon(x,y);
-                map[x][y] = ez;
+                map[4][5] = new startingPosition(4,5);
+                x-=2;
+                y-=2;
+                BasicRoom e = new BasicRoom(3,4);
+                map[3][4] = e;
+                easyDungeon ez = new easyDungeon(3,5);
+                map[3][5] = ez;
+                e = new BasicRoom(3,6);
+                map[3][6] = e;
+                trainingSpot p = new trainingSpot(4,6);
+                map[4][6] = p;
+                e = new BasicRoom(5,6);
+                map[5][6] = e;
+                normalDungeon n = new normalDungeon(5,5);
+                map[5][5] = n;
+                e = new BasicRoom(5,4);
+                map[5][4] = e;
+                hardDungeon t = new hardDungeon(4,4);
+                map[4][4] = t;
             }
             else
             {
                 double rnd = getRndInteger(1, 4);
                 if (rnd == 1)
                 {
-                    if (y + 1 > 50)
+                    if (y + 1 > 100)
                     {
                         y--;
                         makeRndRoom(x,y,map);
@@ -58,7 +70,7 @@ public class Board {
                 }
                 if (rnd == 2)
                 {
-                    if (x + 1 > 20)
+                    if (x + 1 > 15)
                     {
                         x--;
                         makeRndRoom(x,y,map);
@@ -97,38 +109,38 @@ public class Board {
                 }
             }
         }
-        if(x < 9) {
+        if(x < 14) {
             x++;
         }
         else {
-            if (y < 19) {
+            if (y < 29) {
                 y++;
             }
         }
-        finalBossDungeon b = new finalBossDungeon(x,y);
-        map[x][y] = b;
+        finalBossDungeon b = new finalBossDungeon(4,7);
+        map[4][7] = b;
         return map;
     }
     public void makeRndRoom(int x, int y, BasicRoom[][] map)
     {
-        if(x >= 10)
+        if(x >= 15)
         {
-            x = 9;
+            x = 14;
         }
-        if(y >= 20)
+        if(y >= 30)
         {
-            y = 19;
+            y = 29;
 
         }
         int rnd = getRndInteger(1,8);
         if(rnd == 1)
         {
-            int rndX = getRndInteger(0, 9);
-            int rndY = getRndInteger(0, 19);
+            int rndX = getRndInteger(0, 14);
+            int rndY = getRndInteger(0, 29);
             while(map[rndX][rndY] == null)
             {
-                rndX = getRndInteger(0, 9);
-                rndY = getRndInteger(0, 19);
+                rndX = getRndInteger(0, 14);
+                rndY = getRndInteger(0, 29);
             }
             map[x][y] = new teleportationSpot(x, y, rndX, rndY);
         }
@@ -189,6 +201,10 @@ public class Board {
             }
             System.out.println();
         }
-        System.out.println("O = You are here.");
+        System.out.println("YOU = You are here, {TRAIN} = Training Spot, {EASY} = Easy Dungeon, {NORM} = Normal Dungeon, {HARD} = Hard Dungeon, {EXPT} = Expert Dungeon, {BOSS} = Final Boss");
+        System.out.println("{ENTR} = Starting Position, {SAFE} = Safe Spots, {TELE} = Teleportation Spots(Randomly teleports you to a set spot in the dungeon)(Different tele points teleport you into different places)" + "\n" + "Hidden Dungeons are hidden in the map somewhere. Try to find them all!");
+
+
+
     }
 }

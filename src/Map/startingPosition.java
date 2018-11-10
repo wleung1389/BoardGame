@@ -15,7 +15,7 @@ public class startingPosition extends BasicRoom {
      */
     public void enterRoom(Player x)
     {
-        System.out.println("You enter the cave.");
+        System.out.println("*Cave Entrance*");
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
@@ -31,6 +31,6 @@ public class startingPosition extends BasicRoom {
     }
     public String toString()
     {
-        return "[Cave Entrance]";
+        return "[ENTR]";
     }
 }

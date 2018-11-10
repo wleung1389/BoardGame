@@ -24,7 +24,7 @@ public class Player {
 	{
 		Sword sword = new Sword("Beginner's Sword", "Common", "Sword", 10);
 		Armor armor = new Armor("Beginner's Armor", "Common", "Armor",  8);
-		Consumable apple = new Consumable("Apple", "Common", "Consumable",10, 5);
+		Consumable apple = new Consumable("Apple", "Common", "Consumable",10, 20);
 		equipped[0] = sword;
 		equipped[1] = armor;
 		inventory[0] = apple;
@@ -53,8 +53,7 @@ public class Player {
 	}
 	public void attacked(double dmg)
 	{
-		double rnd = Runner.getRndInteger(1,5);
-		chp -= dmg/(rnd/10*equipped[1].getStats());
+		chp -= dmg;
 		if(chp < 0)
 		{
 			chp = 0;
@@ -182,5 +181,11 @@ public class Player {
     public int getDefense()
     {
         return equipped[1].getStats();
+    }
+    public void showStats()
+    {
+        System.out.println("HP : " + this.chp + "/" + this.mhp);
+        System.out.println("Attack : " + equipped[0].getStats());
+        System.out.println("Defense : " + equipped[1].getStats());
     }
 }

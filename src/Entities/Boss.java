@@ -30,8 +30,7 @@ public class Boss implements NPCs {
     }
     public double getAttk(Player x)
     {
-        double rnd = Runner.getRndInteger(1,5);
-        return attack* Runner.getRndInteger(3,8)*((rnd/10) * x.getChp());
+        return attack - (0.5 * x.getDefense());
     }
     public int getDefense()
     {

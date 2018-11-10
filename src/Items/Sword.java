@@ -16,7 +16,7 @@ public class Sword extends Items {
     @Override
     public int getStats()
     {
-        return 1;
+        return this.stats;
     }
     public void setStats(int s)
     {

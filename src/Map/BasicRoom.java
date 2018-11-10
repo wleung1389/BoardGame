@@ -34,6 +34,6 @@ public class BasicRoom {
 	}
 	public String toString()
 	{
-		return "[Safe]";
+		return "[SAFE]";
 	}
 }

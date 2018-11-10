@@ -11,20 +11,23 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		BasicRoom[][] map = new BasicRoom[10][20];
+		BasicRoom[][] map = new BasicRoom[15][30];
 		Board board = new Board(map);
 		map = board.newBoard();
 		 //Setup player 1 and the input scanner
         Scanner in = new Scanner(System.in);
         System.out.println("What is your name?");
         String name = in.nextLine();
-		Player player1 = new Player(name, 0,0);
-		map[0][0].enterRoom(player1);
+		Player player1 = new Player(name, 4,5);
 		player1.createStarterSet();
+		map[4][5].enterRoom(player1);
+        System.out.println("You have entered the cave of Carl. There are many dungeons that contain treasures but many monsters guard those treasures. Slay those monsters and loot the dungeons!");
+        System.out.println("(Recommended : Go into easy dungeons and training spots first before you attempt to try harder dungeons or else you will die.)");
 
 		while(gameOn)
 		{
-            System.out.println("Where would you like to move? (Choose N, S, E, W) (Type M or map to open the map. Type I or inventory to open the inventory. Type Eq or equips to open the equip tab.)");
+            in = new Scanner(System.in);
+            System.out.println("Where would you like to move? (Choose W, A, S, D) (Type M or map to open the map. Type I or inventory to open the inventory. Type E or equips to open the equip tab. Type R or stats to open the stats tab)");
             String move = in.nextLine();
 		    if(String.valueOf(move).toLowerCase().equalsIgnoreCase("map") || String.valueOf(move).toLowerCase().equalsIgnoreCase("m"))
 		    {
@@ -55,16 +58,22 @@ public class Runner {
                     }
 				}
                 else {
-                    if(String.valueOf(move).toLowerCase().equalsIgnoreCase("equips") || String.valueOf(move).toLowerCase().equalsIgnoreCase("eq"))
+                    if(String.valueOf(move).toLowerCase().equalsIgnoreCase("equips") || String.valueOf(move).toLowerCase().equalsIgnoreCase("e"))
                     {
                         player1.showEquips();
                     }
                     else {
-                        if (validMove(move, player1, map)) {
-                            System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
+                    	if(String.valueOf(move).toLowerCase().equalsIgnoreCase("stats") || String.valueOf(move).toLowerCase().equalsIgnoreCase("r"))
+                        {
+                            player1.showStats();
+                        }
+                        else {
+                            if (validMove(move, player1, map)) {
+                                System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 
-                        } else {
-                            System.out.println("Please choose a valid move.");
+                            } else {
+                                System.out.println("Please choose a valid move.");
+                            }
                         }
                     }
                 }
@@ -84,7 +93,7 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
-			case "n":
+			case "w":
 				if (p.getxLoc() > 0 && map[p.getxLoc() - 1][p.getyLoc()] != null)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -95,7 +104,7 @@ public class Runner {
 				{
 					return false;
 				}
-			case "e":
+			case "d":
 				if (p.getyLoc()< map[p.getyLoc()].length -1 && map[p.getxLoc()][p.getyLoc() + 1] != null)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -119,7 +128,7 @@ public class Runner {
 					return false;
 				}
 
-			case "w":
+			case "a":
 				if (p.getyLoc() > 0 && map[p.getxLoc()][p.getyLoc() - 1] != null )
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
