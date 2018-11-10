@@ -40,6 +40,7 @@ public class finalBossDungeon extends BasicRoom {
 			{
 				System.out.println("You have died. Game Over.");
 				Runner.gameOff();
+				System.exit(0);
 			}
 			System.out.println("Fight(F), Inventory(I)");
 			String choice = input.nextLine();

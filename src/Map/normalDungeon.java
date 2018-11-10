@@ -49,11 +49,6 @@ public class normalDungeon extends BasicRoom {
         System.out.println(monster1.getName() + " : " + monster1.getHP() + "/" + monster1.getMHP() + ", " + monster2.getName() + " : " + monster2.getHP() + "/" + monster2.getMHP());
         while(monster1.getHP() != 0 && monster2.getHP() != 0 && x.getChp() > 0)
         {
-            if(x.getChp() <= 0)
-            {
-                System.out.println("You have died. Game Over.");
-                Runner.gameOff();
-            }
             System.out.println("Fight(F), Inventory(I)");
             String choice = input.nextLine();
             if(choice.substring(0,1).equalsIgnoreCase("F"))
@@ -114,6 +109,12 @@ public class normalDungeon extends BasicRoom {
                 }
             }
         }
+        if(x.getChp() <= 0)
+        {
+            System.out.println("You have died. Game Over.");
+            Runner.gameOff();
+            System.exit(0);
+        }
         System.out.println("The boss, " + boss.getName() + " has appeared.");
         System.out.println(boss.getName() + " : " + boss.getHP() + "/" + boss.getMHP());
         while(boss.getHP() > 0)
@@ -122,6 +123,7 @@ public class normalDungeon extends BasicRoom {
             {
                 System.out.println("You have died. Game Over.");
                 Runner.gameOff();
+                System.exit(0);
             }
             System.out.println("Fight(F), Inventory(I)");
             String choice = input.nextLine();

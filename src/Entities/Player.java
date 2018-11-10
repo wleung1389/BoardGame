@@ -113,7 +113,7 @@ public class Player {
 	public void addToInventory(Items item)
     {
         int i = 0;
-        while(inventory[i] == null && i < inventory.length)
+        while(inventory[i] != null && i < inventory.length)
         {
             i++;
         }

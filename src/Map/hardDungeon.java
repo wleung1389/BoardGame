@@ -92,6 +92,12 @@ public class hardDungeon extends BasicRoom {
                 }
             }
         }
+        if(x.getChp() <= 0)
+        {
+            System.out.println("You have died. Game Over.");
+            Runner.gameOff();
+            System.exit(0);
+        }
         System.out.println("The boss, " + boss.getName() + " has appeared.");
         System.out.println(boss.getName() + " : " + boss.getHP() + "/" + boss.getMHP());
         while(boss.getHP() > 0)
@@ -100,6 +106,7 @@ public class hardDungeon extends BasicRoom {
             {
                 System.out.println("You have died. Game Over.");
                 Runner.gameOff();
+                System.exit(0);
             }
             System.out.println("Fight(F), Inventory(I)");
             String choice = input.nextLine();
