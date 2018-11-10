@@ -22,6 +22,7 @@ public class trainingSpot extends BasicRoom {
         System.out.println("You've entered a training spot. You increased your max HP by " + HP + ". You lost " + lHP + ".");
         x.gainHP((int) Math.round(HP*multiplier));
         multiplier++;
+        x.setChp(x.getChp() - lHP);
         System.out.println("Your HP stat now is " + x.getChp() + "/" + x.getMhp() + ".");
         occupant = x;
         x.setxLoc(this.xLoc);
