@@ -82,6 +82,31 @@ public class expertDungeon extends BasicRoom {
             } else {
                 if(choice.substring(0,1).toLowerCase().equalsIgnoreCase("i")) {
                     x.showInventory();
+                    int in = 0;
+                    while(in <= 0 ) {
+                        try {
+                            in = Integer.parseInt(input.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Please input a number greater than 0.");
+                        }
+                    }
+                    if(x.itemInInventoryAtSlot(in - 1) == null)
+                    {
+                        System.out.println("There is nothing in that slot. Please choose another slot.");
+                    }
+                    else {
+                        if (x.itemInInventoryAtSlot(in - 1).getType().equalsIgnoreCase("Consumable") ) {
+                            x.consume(in);
+                        } else {
+                            if (in > 20) {
+                                in = 20;
+                            }
+                            if (in < 1) {
+                                in = 1;
+                            }
+                            x.equip(in);
+                        }
+                    }
                 }
                 else
                 {
@@ -123,7 +148,14 @@ public class expertDungeon extends BasicRoom {
             {
                 if(choice.substring(0,1).toLowerCase().equalsIgnoreCase("i")) {
                     x.showInventory();
-                    int in = Integer.parseInt(input.nextLine());
+                    int in = 0;
+                    while(in <= 0 ) {
+                        try {
+                            in = Integer.parseInt(input.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Please input a number greater than 0.");
+                        }
+                    }
                     if(x.itemInInventoryAtSlot(in - 1) == null)
                     {
                         System.out.println("There is nothing in that slot. Please choose another slot.");
