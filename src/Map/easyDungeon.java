@@ -55,7 +55,7 @@ public class easyDungeon extends BasicRoom {
                 fighting = false;
             }
             System.out.println("Fight(F), Inventory(I)");
-            String choice = "";
+            String choice = input.nextLine();
             while(choice.equalsIgnoreCase("")) {
                 System.out.println("Please type something.");
                 choice = input.nextLine();
@@ -150,7 +150,7 @@ public class easyDungeon extends BasicRoom {
                 System.exit(0);
             }
             System.out.println("Fight(F), Inventory(I)");
-            String choice = "";
+            String choice = input.nextLine();
             while(choice.equalsIgnoreCase("")) {
                 System.out.println("Please type something.");
                 choice = input.nextLine();

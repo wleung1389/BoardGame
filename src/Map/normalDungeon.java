@@ -50,7 +50,7 @@ public class normalDungeon extends BasicRoom {
         while(monster1.getHP() != 0 && monster2.getHP() != 0 && x.getChp() > 0)
         {
             System.out.println("Fight(F), Inventory(I)");
-            String choice = "";
+            String choice = input.nextLine();
             while(choice.equalsIgnoreCase("")) {
                 System.out.println("Please type something.");
                 choice = input.nextLine();
@@ -137,7 +137,7 @@ public class normalDungeon extends BasicRoom {
                 System.exit(0);
             }
             System.out.println("Fight(F), Inventory(I)");
-            String choice = "";
+            String choice = input.nextLine();
             while(choice.equalsIgnoreCase("")) {
                 System.out.println("Please type something.");
                 choice = input.nextLine();
