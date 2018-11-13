@@ -174,7 +174,7 @@ public class Player {
     public void consume(int index)
     {
         index -= 1;
-        if(inventory[index].getType().equals("Consumable")) {
+        if(inventory[index].getType().equals("Consumable") && inventory[index].getQuantity() > 0) {
             int hp = this.getChp() + inventory[index].getStats();
             if (hp > this.getMhp()) {
                 hp = this.getMhp();
@@ -182,6 +182,13 @@ public class Player {
             this.setChp(hp);
             System.out.println("You ate/used a(n) " + inventory[index].getName() + " and gained " + inventory[index].getStats() + "HP. Your current hp is now " + this.getChp() + "/" + this.getMhp() + ".");
             inventory[index].setQuantity(inventory[index].getQuantity() - 1);
+        }
+        else
+        {
+            if(inventory[index].getQuantity() == 0)
+            {
+                inventory[index] = null;
+            }
         }
     }
     public Items itemInInventoryAtSlot(int index)
