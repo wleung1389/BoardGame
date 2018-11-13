@@ -17,13 +17,19 @@ public class trainingSpot extends BasicRoom {
      */
     public void enterRoom(Player x)
     {
-        int HP = getRndInteger(1,6);
-        int lHP = getRndInteger(4,10);
-        System.out.println("You've entered a training spot. You increased your max HP by " + HP + ". You lost " + lHP + ".");
-        x.gainHP((int) Math.round(HP*multiplier));
-        multiplier++;
-        x.setChp(x.getChp() - lHP);
-        System.out.println("Your HP stat now is " + x.getChp() + "/" + x.getMhp() + ".");
+        if(x.getChp() > 10) {
+            int HP = getRndInteger(1, 6);
+            int lHP = getRndInteger(4, 10);
+            System.out.println("You've entered a training spot. You increased your max HP by " + HP + ". You lost " + lHP + ".");
+            x.gainHP((int) Math.round(HP * multiplier));
+            multiplier++;
+            x.setChp(x.getChp() - lHP);
+            System.out.println("Your HP stat now is " + x.getChp() + "/" + x.getMhp() + ".");
+        }
+        else
+        {
+            System.out.println("You don't have enough HP to train. Please heal up.");
+        }
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);

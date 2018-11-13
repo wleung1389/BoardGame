@@ -36,7 +36,7 @@ public class Consumable extends Items {
     }
     public String toString()
     {
-        return this.name + " x" +this.quantity;
+        return this.name + " x" + this.quantity;
     }
     public String getType() {
         return this.type;
