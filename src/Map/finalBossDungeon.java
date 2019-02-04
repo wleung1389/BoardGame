@@ -26,7 +26,7 @@ public class finalBossDungeon extends BasicRoom {
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-		String name = "Orac The Orc";
+		String name = "Carl";
 		int bhp = Runner.getRndInteger(2000,2100);
 		int battk = Runner.getRndInteger(85,100);
 		int bdefense = Runner.getRndInteger(70,90);
